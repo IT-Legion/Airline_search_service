@@ -7,11 +7,26 @@ def show_all_flights(string):
         elif i != '\n':
             temp += i
     print('')
+
 def chek_data(string):
     count = 0
     for _ in string:
         count += 1
     return count
+
+def search(num,string):
+    temp = ''
+    count = 0
+    for i in string:
+        if i in num:
+            temp += i
+            count += 1
+            if count == 4 and temp == num:
+                print('1')
+    print('')
+
+
+
 
 all_flights = '504N 02/05/2023 18:30 03.30 KUF led 7500\n211U 05/05/2023 10:15 07.20 KZN MMK 15000\n'
 
@@ -76,5 +91,5 @@ while True:
         show_all_flights(all_flights)
 
     elif item == 3:
-        num = input('Введите номер рейса в формате XXXX')
-        print('3')
+        num = input('Введите номер рейса в формате XXXX: ')
+        search(num,all_flights)
