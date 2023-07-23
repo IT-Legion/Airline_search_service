@@ -17,18 +17,20 @@ def chek_data(string):
 def search(num,string):
     temp = ''
     count = 0
+    flag = False
     for i in string:
-        if i in num:
-            temp += i
+        if '\n' not in temp:
             count += 1
+            temp += i
             if count == 4 and temp == num:
-                print('1')
+                flag = True
+            elif count == 4 and flag == False:
+                count = 0
+                temp = ''
+    print(temp)
     print('')
 
-
-
-
-all_flights = '504N 02/05/2023 18:30 03.30 KUF led 7500\n211U 05/05/2023 10:15 07.20 KZN MMK 15000\n'
+all_flights = '504N 02/05/2023 18:30 03.30 KUF LED 7500\n211U 05/05/2023 10:15 07.20 KZN MMK 15000\n'
 
 while True:
     print('Главное меню\n')
