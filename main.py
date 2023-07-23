@@ -24,9 +24,13 @@ def search(num,string):
             temp += i
             if count == 4 and temp == num:
                 flag = True
+            elif i not in num and flag == False:
+                count = 0
+                temp = ''
             elif count == 4 and flag == False:
                 count = 0
                 temp = ''
+
     print(temp)
     print('')
 
