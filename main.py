@@ -1,18 +1,39 @@
-def show_all_flights(string):
-    temp = ''
-    for i in string:
-        if i == '\n':
-            print('Информация о рейсе: ',temp)
-            temp = ''
-        elif i != '\n':
-            temp += i
-    print('')
+ABC_l = "abcdefghijklmnopqrstuvwxyz"
+ABC_up = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+all_flights = '504N 02/05/2023 18:30 03.30 KUF LED 7500\n211U 05/05/2023 10:15 07.20 KZN MMK 15000\n'
 
-def chek_data(string):
+
+
+def validation(string,chek):
     count = 0
     for _ in string:
         count += 1
+    if count != chek:
+        print('Не Верный формат')
     return count
+
+def uppper(string):
+    def index(s):
+        index = 0
+        for i in ABC_l:
+            index += 1
+            if s == i:
+                return index
+
+    def up(index):
+        i = 0
+        for symbol in ABC_up:
+            i += 1
+            if index == i:
+                return symbol
+
+    temp = ''
+    for symbol in string:
+        if symbol in ABC_l:
+            temp += up(index(symbol))
+        else:
+            temp += symbol
+    return temp
 
 def search(num,string):
     temp = ''
@@ -30,11 +51,29 @@ def search(num,string):
             elif count == 4 and flag == False:
                 count = 0
                 temp = ''
+        elif temp == '':
+            temp = f'Рейс {num} не найден'
+    return temp
 
-    print(temp)
+
+
+def show_all_flights(string):
+    temp = ''
+    for i in string:
+        if i == '\n':
+            print('Информация о рейсе: ',temp)
+            temp = ''
+        elif i != '\n':
+            temp += i
     print('')
 
-all_flights = '504N 02/05/2023 18:30 03.30 KUF LED 7500\n211U 05/05/2023 10:15 07.20 KZN MMK 15000\n'
+
+
+
+
+
+
+
 
 while True:
     print('Главное меню\n')
@@ -46,50 +85,36 @@ while True:
     if item == 0:
         print('0')
         break
-
     elif item == 1:
         while True:
             flight_number = input('XXXX - Введите номер реса: ')
-            count = chek_data(flight_number)
-            if count == 4:
+            if validation(flight_number,4) == 4:
                 break
-            print('Не Верный формат')
         while True:
             date = input("ДД/ММ/ГГГГ - дата рейса: ")
-            count = chek_data(date)
-            if count == 10:
+            if validation(date,10)== 10:
                 break
-            print('Не Верный формат')
         while True:
             time = input('ЧЧ:MM - Время рейса: ')
-            count = chek_data(time)
-            if count == 5:
+            if validation(time,5) == 5:
                 break
-            print('Не Верный формат')
         while True:
             duration = input('XX.XX - длительность перелёта: ')
-            count = chek_data(duration)
-            if count == 5:
+            if validation(duration,5) == 5:
                 break
-            print('Не Верный формат')
         while True:
-            flight_from = input('XXX - аэропорт вылета: ')
-            count = chek_data(flight_from)
-            if count == 3:
+            departure = input('XXX - аэропорт вылета: ')
+            if validation(departure,3) == 3:
                 break
-            print('Не Верный формат')
         while True:
-            flight_to = input('XXX - аэропорт вылета: ')
-            count = chek_data(flight_to)
-            if count == 3:
+            arrival = input('XXX - аэропорт вылета: ')
+            if validation(arrival,3) == 3:
                 break
-            print('Не Верный формат')
         while True:
             price = float(input('.XX - стоимость билета (> 0): '))
             if price > 0:
                 break
-
-        temp = f"{flight_number} {date} {time} {duration} {flight_from} {flight_to} {price}"
+        temp = uppper(f"{flight_number} {date} {time} {duration} {departure} {arrival} {price}")
         all_flights += f'{temp}\n'
         print(f'Информация о рейсе {temp} добавлена')
 
@@ -98,4 +123,6 @@ while True:
 
     elif item == 3:
         num = input('Введите номер рейса в формате XXXX: ')
-        search(num,all_flights)
+        validation(num, 4)
+        print(search(uppper(num), all_flights))
+
