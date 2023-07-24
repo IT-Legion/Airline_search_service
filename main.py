@@ -88,15 +88,16 @@ while True:
             if validation(time,5) == 5:
                 break
         while True:
-            duration = input('XX.XX - длительность перелёта: ')
-            if validation(duration,5) == 5:
+            duration = float(input('XX.XX - длительность перелёта: '))
+            if validation(duration,5) == 5 and duration > 0:
                 break
+
         while True:
             departure = input('XXX - аэропорт вылета: ')
             if validation(departure,3) == 3:
                 break
         while True:
-            arrival = input('XXX - аэропорт прибытия: ')
+            arrival = input('XXX - аэропорт назначения: ')
             if validation(arrival,3) == 3:
                 break
         while True:
