@@ -2,8 +2,6 @@ ABC_l = "abcdefghijklmnopqrstuvwxyz"
 ABC_up = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 all_flights = '504N 02/05/2023 18:30 03.30 KUF LED 7500\n211U 05/05/2023 10:15 07.20 KZN MMK 15000\n'
 
-
-
 def validation(string,chek):
     count = 0
     for _ in string:
@@ -55,8 +53,6 @@ def search(num,string):
             temp = f'Рейс {num} не найден'
     return temp
 
-
-
 def show_all_flights(string):
     temp = ''
     for i in string:
@@ -66,13 +62,6 @@ def show_all_flights(string):
         elif i != '\n':
             temp += i
     print('')
-
-
-
-
-
-
-
 
 
 while True:
@@ -107,7 +96,7 @@ while True:
             if validation(departure,3) == 3:
                 break
         while True:
-            arrival = input('XXX - аэропорт вылета: ')
+            arrival = input('XXX - аэропорт прибытия: ')
             if validation(arrival,3) == 3:
                 break
         while True:
