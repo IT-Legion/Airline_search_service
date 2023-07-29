@@ -1,6 +1,6 @@
 ABC_l = "abcdefghijklmnopqrstuvwxyz"
 ABC_up = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-all_flights = '504N 02/05/2023 18:30 03.30 KUF LED 7500\n211U 05/05/2023 10:15 07.20 KZN MMK 15000\n'
+all_flights = ''
 
 def validation(string,chek):
     count = 0
@@ -10,21 +10,20 @@ def validation(string,chek):
         print('Не Верный формат')
     return count
 
+def index(s):
+    index = 0
+    for i in ABC_l:
+        index += 1
+        if s == i:
+            return index
+
+def up(index):
+    i = 0
+    for symbol in ABC_up:
+        i += 1
+        if index == i:
+            return symbol
 def uppper(string):
-    def index(s):
-        index = 0
-        for i in ABC_l:
-            index += 1
-            if s == i:
-                return index
-
-    def up(index):
-        i = 0
-        for symbol in ABC_up:
-            i += 1
-            if index == i:
-                return symbol
-
     temp = ''
     for symbol in string:
         if symbol in ABC_l:
