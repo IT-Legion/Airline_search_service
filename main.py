@@ -3,6 +3,11 @@ ABC_up = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 all_flights = ''
 
 def validation(string,chek):
+    """
+    :param string: Обьект
+    :param chek: Значение проверки
+    :return: Допуск
+    """
     count = 0
     for _ in string:
         count += 1
@@ -11,6 +16,11 @@ def validation(string,chek):
     return count
 
 def index(s):
+    """
+    Определяет индекс символа из алфавита:
+    :param s: Переменная
+    :return: Индекс
+    """
     index = 0
     for i in ABC_l:
         index += 1
@@ -18,12 +28,22 @@ def index(s):
             return index
 
 def up(index):
+    """
+     Заменяет символ
+    :param index: Принимает из вспомогательной функции
+    :return: Верхний регистор
+    """
     i = 0
     for symbol in ABC_up:
         i += 1
         if index == i:
             return symbol
 def uppper(string):
+    '''
+    Заменяем все символы.
+    :param string:
+    :return: Верхний регистор
+    '''
     temp = ''
     for symbol in string:
         if symbol in ABC_l:
@@ -33,6 +53,12 @@ def uppper(string):
     return temp
 
 def search(num,string):
+    """
+    функция проверки номера рейса;
+    :param num: номер рейса
+    :param string: Общая переменная
+    :return:
+    """
     temp = ''
     count = 0
     flag = False
@@ -53,6 +79,7 @@ def search(num,string):
     return temp
 
 def show_all_flights(string):
+    """Функция чтения всех данных из общей переменной;"""
     temp = ''
     for i in string:
         if i == '\n':
